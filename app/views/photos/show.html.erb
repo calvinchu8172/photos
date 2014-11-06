@@ -1,0 +1,8 @@
+
+<%= @photo.name %>
+<%= simple_format(@photo.comment) %>
+<%= @photo.created_at %>
+
+<%= link_to image_tag( @photo.logo.url(:thumb) ), @photo.logo.url %>
+
+<p><%= link_to 'Back to index', photos_path %></p>
