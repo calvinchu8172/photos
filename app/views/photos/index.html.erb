@@ -1,18 +1,26 @@
 <table class="table table-striped">
 
+<tr>
+<td><%= link_to 'New Photo', new_photo_path %></td>
+<% if user_signed_in? %>
+  <td><%#= link_to 'My Photo Index', user_path(current_user) %></td>
+  <td><%= link_to 'My Photo Index', user_path(current_user) %></td>
+<% end %>
+<td><%#= link_to 'My Photo Show', user_path(current_user) %></td>
+</tr>
+
+<%#= paginate @photos %>
 
 <% @photos.each do |photo| %>
 <tr>	
 <td><%= link_to image_tag( photo.logo.url(:thumb) ), photo.logo.url %></td>
-<td><%= simple_format(photo.name) %>
+<td><%= link_to simple_format(photo.name), photo_path(photo) %>
     <%= simple_format(photo.comment) %></td>
 <td><%#= link_to 'Show', photo_path(photo) %></td>
 <td><%#= link_to 'Edit', edit_photo_path(photo) %></td>
 <td><%#= link_to 'Delete', photo_path(photo), :method => :delete %></td>
 </tr> 
 <% end %>
-<tr>
-<td><%= link_to 'New Photo', new_photo_path %></td>
-</tr>
+
 </table>
-<%= paginate @photos %>
+

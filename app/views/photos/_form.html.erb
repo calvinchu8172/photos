@@ -5,6 +5,8 @@
 <%= f.label :comment, "Comment" %>
 <%= f.text_area :comment %>
 
+<%= f.hidden_field :user_id, :value => current_user.id %>
+
 <div class="form-group">
   <%= f.file_field :logo %>
 </div>

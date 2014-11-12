@@ -1,8 +1,13 @@
 class PhotosController < ApplicationController
 
+before_action :authenticate_user!, :except => [:new]
+
+
 def index
-  @photos = Photo.page(params[:page]).per(5)
+  #@photos = Photo.page(params[:page]).per(5)
+  @photos = Photo.all
 end
+
 
 def new
   @photo = Photo.new
@@ -17,7 +22,11 @@ end
 
 def show
   @photo = Photo.find(params[:id])
-  @page_title = @photo.name
+  if @photo.user == current_user
+    @page_title = @photo.name
+  else
+    redirect_to root_path
+  end
 end
 
 def edit
