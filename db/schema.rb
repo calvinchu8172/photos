@@ -11,11 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106090034) do
+ActiveRecord::Schema.define(version: 20141112133200) do
 
   create_table "comments", force: true do |t|
+    t.integer  "photo_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "content"
+    t.integer  "comments_count"
   end
 
   create_table "photos", force: true do |t|
@@ -28,6 +32,7 @@ ActiveRecord::Schema.define(version: 20141106090034) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.string   "status"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
