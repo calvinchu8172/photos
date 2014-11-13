@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20141112133200) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "content"
-    t.integer  "comments_count"
   end
 
   create_table "photos", force: true do |t|
@@ -33,6 +32,7 @@ ActiveRecord::Schema.define(version: 20141112133200) do
     t.datetime "logo_updated_at"
     t.string   "status"
     t.integer  "user_id"
+    t.integer  "comments_count"
   end
 
   create_table "users", force: true do |t|

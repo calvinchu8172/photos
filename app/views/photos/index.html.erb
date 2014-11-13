@@ -15,8 +15,9 @@
 <tr>
     <th>Photo</th>
     <th>Photo name</th>
-    <th>Author<th>
+    <th>Author</th>
     <th>Comment</th>
+    <th>Comments Count</th>
 </tr>
 
 
@@ -29,11 +30,16 @@
 <td><%= link_to t.name, photo_path(t) %></td>
 <td><%= link_to t.user.email, user_path(t.user) %></td>
 <td><%= simple_format(t.comment) %></td>
+<td><%= t.comments.count %></td>
 <td><%#= link_to 'Show', photo_path(photo) %></td>
 <td><%#= link_to 'Edit', edit_photo_path(photo) %></td>
 <td><%#= link_to 'Delete', photo_path(photo), :method => :delete %></td>
 </tr> 
 <% end %>
+
+<p>Total photo: <%= Photo.count %></p>
+<p>Total comments: <%= Comment.count %></p>
+<p>Total users: <%= User.count %></p>
 
 </table>
 

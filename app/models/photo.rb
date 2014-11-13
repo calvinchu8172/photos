@@ -6,4 +6,8 @@ class Photo < ActiveRecord::Base
 
 	belongs_to :user
 	has_many :comments, :dependent => :destroy
+
+	def can_delete_by?(user)
+     (self.user == user ) || user.admin?
+    end
 end

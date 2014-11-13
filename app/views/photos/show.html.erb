@@ -1,7 +1,24 @@
 
 <%= simple_format(@photo.name) %>
 <%= link_to image_tag( @photo.logo.url(:thumb) ), @photo.logo.url %>
+
+<% if @photo.user == current_user %>
+<p><%= link_to "Delete Photo", photo_path(@photo), :method => :delete %></p>
+<% end %>
+
+<p>Comments</p>
+
 <%= simple_format(@photo.comment) %>
+
+<% @photo.comments.each do |c| %>
+	
+	<p><%= c.content %> by <%= c.user.username %></p>
+
+	<% if (c.user == current_user) %>
+    <%= link_to "Delete Comment", photo_comment_path(@photo, c), :method => :delete %>
+    <% end %>
+
+<% end %>
 
 <h2>New comment</h2>
 
